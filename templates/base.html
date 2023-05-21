@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Уснатовка ГБО на автомобили</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+<!--    <link href="{{ url_for('static', filename='img/favicon.png')}}" rel="icon" />-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/aos/aos.css')}}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet" />
+    <link  href="{{ url_for('static', filename='vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='vendor/remixicon/remixicon.css')}}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet" />
+
+</head>
+
+<body>
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+
+      <h1 class="logo me-auto me-lg-0"><a href="index.html"><span>ГБО</span></a></h1>
+      <!-- Логотипчик -->
+      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Главная</a></li>
+          <li><a class="nav-link scrollto" href="#about">О нас</a></li>
+          <li><a class="nav-link scrollto" href="#features">Наши услуги</a></li>
+          <li><a class="nav-link scrollto " href="#team">Наша команда</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="#contact" class="get-started-btn scrollto">Оформить заказ</a>
+
+    </div>
+  </header>
+
+  <section id="hero" class="d-flex align-items-center justify-content-center">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-xl-6 col-lg-8">
+          <h1>НАДЕЖНОЕ ГБО ИЗ ЕВРОПЫ<span>.</span></h1>
+          <h2>У НАС ВСЁ ЕЩЕ ДОСТУПНО ОРИГИНАЛЬНОЕ ОБОРУДОВАНИЕ ИЗ ИТАЛИИ!</h2>
+            <h2>Подберем и поставим лучший комплект для вашего автомобиля!</h2>
+        </div>
+      </div>
+
+      <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="">
+              <img src="{{url_for('static', filename='img/repair.png')}}" />
+            </i>
+            <h3><a href="">Установка ГБО</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="">
+              <img src="{{url_for('static', filename='img/32.png')}}" />
+            </i>
+            <h3><a href="">Регистрация ГБО</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="">
+              <img src="{{url_for('static', filename='img/gazel-3.png')}}" />
+            </i>
+            <h3><a href="">ГБО на Газель</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="">
+              <img src="{{url_for('static', filename='img/repair.png')}}" />
+            </i>
+            <h3><a href="">Ремонт ГБО</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="">
+              <img src="{{url_for('static', filename='img/taxi-2.png')}}" />
+            </i>
+            <h3><a href="">ГБО на такси</a></h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <main id="main">
+
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="{{url_for('static', filename='img/1.jpg')}}" class="img-fluid"/>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+            <h3>Установка ГБО на любые автомобили.</h3>
+            <p class="fst-italic">
+              Наш автосервис по установке ГБО работает уже больше 20 лет, с 1997 года. Нас знают на рынке, нас рекомендуют родственникам и уже даже детям.
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> Мы работаем с разными производителями ГБО, но особенно рекомендуем ГБО Lovato (Италия) - на это оборудование мы готовы дать гарантию без ограничения пробега и ГБО Digitronic (Польша) - чуть более дешевый вариант, для тех кто привык на нем ездить и доверяет марке.</li>
+              <li><i class="ri-check-double-line"></i> Посоветуем вам лучший комплект оборудования для вашего автомобиля, а если ваш авто не дружит с газом, то честно об этом предупредим! </li>
+              <li><i class="ri-check-double-line"></i> В нашем сервисе вы можете установить ГБО в Москве под ключ, зарегистрировать его в ГИБДД, купить отдельные компоненты газобаллонного оборудования, заказать настройку или ремонт уже имеющегося газового оборудования.</li>
+            </ul>
+            <p>
+              Автомобили с нашим оборудованием ходят по 500 тысяч километров, затем снимают его и ставят еще раз на новый автомобиль.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="image col-lg-6" style='background-image: url("{{ url_for('static', filename='img/4.jpg') }}");' data-aos="fade-right"></div>
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+            <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-receipt"></i>
+              <h4>Законность</h4>
+              <p>Все ГБО проходят качествую проверку, после чего мы подписываем с вами договор</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-cube-alt"></i>
+              <h4>Качество продукции</h4>
+              <p>Все двигатели выполнены только из качественных материалов и по соверменным стандартам</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-images"></i>
+              <h4>Реальные фото</h4>
+              <p>Вся наша фотогалерея представлена на нашем сайте!</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-shield"></i>
+              <h4>Безопасность</h4>
+              <p>ГБО намного безаопаснее ДВС, именно поэтому мы агетируем людей переходить на этот тип двигателей.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="team" class="team">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Команда</h2>
+          <p>Давайте познакомимся!</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+              <div class="member-img">
+                <img src="{{url_for('static', filename='img/team/team-1.jpg')}}" class="img-fluid"/>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Миххаил Сергеевич</h4>
+                <span>Генеральный директор</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="200">
+              <div class="member-img">
+                <img src="{{url_for('static', filename='img/team/team-2.jpg')}}" class="img-fluid"/>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Калинин Даниил</h4>
+                <span>Порядочный парень</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="300">
+              <div class="member-img">
+                <img src="{{url_for('static', filename='img/team/team-3.jpg')}}" class="img-fluid"/>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Кто-то еще</h4>
+                <span>Тоже молоедц</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="400">
+              <div class="member-img">
+                <img src="{{url_for('static', filename='img/team/team-4.jpg')}}" class="img-fluid"/>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Артём</h4>
+                <span>Я</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Заявка</h2>
+          <p>Оформить заявку</p>
+        </div>
+
+        <div>
+          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1d65a4007820da19d811580fc1b501cde97d9d6a97df65714bebd53fb86a2c37&amp;source=constructor" width="1270" height="423" frameborder="0"></iframe>        </div>
+
+        <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Наш адрес:</h4>
+                <p>Пятницкая улица, 71/5с9, Москва, 115054</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>kalina@mail.ru</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Номер телефона:</h4>
+                <p>+7(999)-455-23-23</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Имя" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Фамилия" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Номер телефона" required>
+              </div>
+              <div class="form-group mt-3">
+                <select class="form-control" name="" id="">
+                  <option value="">Установка атомного реактора</option>
+                  <option value="">!1123</option>
+                  <option value="">123123</option>
+                  <option value="">123123</option>
+                </select>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Отправить заявку</button></div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>Установка ГБО<span></span></h3>
+              <p>
+                Бакунинская ул. <br>
+                дом 86к3, 123567<br><br>
+                <strong>Телефон:</strong> +7(999)123-45-56<br>
+                <strong>Email:</strong> kalina@mail.ru<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="vk"><i class="bx bxl-vk"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-youtube"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-telegram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Бычтрый доступ</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Главная</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">О нас</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Наши услуги</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Наша команда</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Оформить заказ</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="{{ url_for('static', filename='vendor/purecounter/purecounter_vanilla.js') }}"></script>
+
+  <script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/php-email-form/validate.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
