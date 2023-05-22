@@ -317,7 +317,7 @@ function getSize( elem ) {
     var num = parseFloat( value );
     size[ measurement ] = !isNaN( num ) ? num : 0;
   }
-
+//
   var paddingWidth = size.paddingLeft + size.paddingRight;
   var paddingHeight = size.paddingTop + size.paddingBottom;
   var marginWidth = size.marginLeft + size.marginRight;
