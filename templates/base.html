@@ -287,34 +287,85 @@
           </div>
 
           <div class="col-lg-8 mt-5 mt-lg-0">
+            <style>
+              .is-invalid {
+  border-color: red !important;
+}
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Имя" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Фамилия" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Номер телефона" required>
-              </div>
-              <div class="form-group mt-3">
-                <select class="form-control" name="" id="">
-                  <option value="">Установка атомного реактора</option>
-                  <option value="">!1123</option>
-                  <option value="">123123</option>
-                  <option value="">123123</option>
-                </select>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Отправить заявку</button></div>
-            </form>
+            </style>
+<form id="order-form" action="/submit" method="post" role="form" class="php-email-form">
+  <div class="row">
+    <div class="col-md-6 form-group">
+      <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Имя" onkeydown="return /[a-zA-Zа-яА-Я]/.test(event.key)" required>
+    </div>
+    <div class="col-md-6 form-group mt-3 mt-md-0">
+      <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Фамилия" onkeydown="return /[a-zA-Zа-яА-Я]/.test(event.key)" required>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 form-group mt-3 mt-md-0">
+      <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+    </div>
+    <div class="col-md-6 form-group mt-3 mt-md-0">
+      <input type="tel" maxlength="16" class="form-control" name="phone_number" id="phone_number" placeholder="Номер телефона" required>
+    </div>
+  </div>
+
+  <div class="form-group mt-3">
+    <select class="form-control" name="service" id="service">
+      {% for service in services %}
+      <option value="{{ service }}">{{ service }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <button type="submit">Оформить</button>
+</form>
+
+<script>
+  // Получаем ссылку на форму
+  var form = document.getElementById('order-form');
+  var phoneNumberInput = document.getElementById('phone_number');
+
+  // Обработчик события oninput для поля phone_number
+  phoneNumberInput.addEventListener('input', function(event) {
+    formatPhoneNumber(event.target);
+    validatePhoneNumber(event.target);
+  });
+
+  // Функция для форматирования поля phone_number
+  function formatPhoneNumber(input) {
+    var phoneNumber = input.value.trim().replace(/[^0-9]/g, ''); // Удаляем все символы, кроме цифр
+    var formattedPhoneNumber = '+7 (' + phoneNumber.slice(1, 4) + ') ' + phoneNumber.slice(4); // Форматируем номер
+
+    input.value = formattedPhoneNumber;
+  }
+
+  // Функция для валидации поля phone_number
+  function validatePhoneNumber(input) {
+    var phoneNumber = input.value.trim().replace(/[^0-9]/g, ''); // Удаляем все символы, кроме цифр
+
+    if (phoneNumber.length !== 11) {
+      input.classList.add('is-invalid');
+    } else {
+      input.classList.remove('is-invalid');
+    }
+  }
+
+  // Обработчик отправки формы
+  form.addEventListener('submit', function(event) {
+    if (phoneNumberInput.classList.contains('is-invalid')) {
+      event.preventDefault(); // Отменяем отправку формы, если валидация не пройдена
+    }
+  });
+</script>
+
+
+
+
+
+
 
           </div>
 
@@ -372,7 +423,6 @@
   <script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
   <script src="{{ url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
   <script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='vendor/php-email-form/validate.js') }}"></script>
   <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>

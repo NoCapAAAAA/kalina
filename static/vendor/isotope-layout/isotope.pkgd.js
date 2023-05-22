@@ -1,37 +1,15 @@
-/*!
- * Isotope PACKAGED v3.0.6
- *
- * Licensed GPLv3 for open source use
- * or Isotope Commercial License for commercial use
- *
- * https://isotope.metafizzy.co
- * Copyright 2010-2018 Metafizzy
- */
-
-/**
- * Bridget makes jQuery widgets
- * v2.0.1
- * MIT license
- */
-
-/* jshint browser: true, strict: true, undef: true, unused: true */
 
 ( function( window, factory ) {
-  // universal module definition
-  /*jshint strict: false */ /* globals define, module, require */
   if ( typeof define == 'function' && define.amd ) {
-    // AMD
     define( 'jquery-bridget/jquery-bridget',[ 'jquery' ], function( jQuery ) {
       return factory( window, jQuery );
     });
   } else if ( typeof module == 'object' && module.exports ) {
-    // CommonJS
     module.exports = factory(
       window,
       require('jquery')
     );
   } else {
-    // browser global
     window.jQueryBridget = factory(
       window,
       window.jQuery
@@ -41,31 +19,21 @@
 }( window, function factory( window, jQuery ) {
 'use strict';
 
-// ----- utils ----- //
-
 var arraySlice = Array.prototype.slice;
 
-// helper function for logging errors
-// $.error breaks jQuery chaining
 var console = window.console;
 var logError = typeof console == 'undefined' ? function() {} :
   function( message ) {
     console.error( message );
   };
 
-// ----- jQueryBridget ----- //
-
 function jQueryBridget( namespace, PluginClass, $ ) {
   $ = $ || jQuery || window.jQuery;
   if ( !$ ) {
     return;
   }
-
-  // add option method -> $().plugin('option', {...})
   if ( !PluginClass.prototype.option ) {
-    // option setter
     PluginClass.prototype.option = function( opts ) {
-      // bail out if not an object
       if ( !$.isPlainObject( opts ) ){
         return;
       }
@@ -73,26 +41,21 @@ function jQueryBridget( namespace, PluginClass, $ ) {
     };
   }
 
-  // make jQuery plugin
   $.fn[ namespace ] = function( arg0 /*, arg1 */ ) {
     if ( typeof arg0 == 'string' ) {
-      // method call $().plugin( 'methodName', { options } )
-      // shift arguments by 1
+
       var args = arraySlice.call( arguments, 1 );
       return methodCall( this, arg0, args );
     }
-    // just $().plugin({ options })
     plainCall( this, arg0 );
     return this;
   };
 
-  // $().plugin('methodName')
   function methodCall( $elems, methodName, args ) {
     var returnValue;
     var pluginMethodStr = '$().' + namespace + '("' + methodName + '")';
 
     $elems.each( function( i, elem ) {
-      // get instance
       var instance = $.data( elem, namespace );
       if ( !instance ) {
         logError( namespace + ' not initialized. Cannot call methods, i.e. ' +
@@ -106,9 +69,7 @@ function jQueryBridget( namespace, PluginClass, $ ) {
         return;
       }
 
-      // apply method, get return value
       var value = method.apply( instance, args );
-      // set return value if value is returned, use only first value
       returnValue = returnValue === undefined ? value : returnValue;
     });
 
@@ -119,11 +80,9 @@ function jQueryBridget( namespace, PluginClass, $ ) {
     $elems.each( function( i, elem ) {
       var instance = $.data( elem, namespace );
       if ( instance ) {
-        // set options & init
         instance.option( options );
         instance._init();
       } else {
-        // initialize new instance
         instance = new PluginClass( elem, options );
         $.data( elem, namespace, instance );
       }
@@ -133,10 +92,6 @@ function jQueryBridget( namespace, PluginClass, $ ) {
   updateJQuery( $ );
 
 }
-
-// ----- updateJQuery ----- //
-
-// set $.bridget for v1 backwards compatibility
 function updateJQuery( $ ) {
   if ( !$ || ( $ && $.bridget ) ) {
     return;
@@ -146,31 +101,17 @@ function updateJQuery( $ ) {
 
 updateJQuery( jQuery || window.jQuery );
 
-// -----  ----- //
-
 return jQueryBridget;
 
 }));
 
-/**
- * EvEmitter v1.1.0
- * Lil' event emitter
- * MIT License
- */
-
-/* jshint unused: true, undef: true, strict: true */
 
 ( function( global, factory ) {
-  // universal module definition
-  /* jshint strict: false */ /* globals define, module, window */
   if ( typeof define == 'function' && define.amd ) {
-    // AMD - RequireJS
     define( 'ev-emitter/ev-emitter',factory );
   } else if ( typeof module == 'object' && module.exports ) {
-    // CommonJS - Browserify, Webpack
     module.exports = factory();
   } else {
-    // Browser globals
     global.EvEmitter = factory();
   }
 
@@ -186,11 +127,8 @@ proto.on = function( eventName, listener ) {
   if ( !eventName || !listener ) {
     return;
   }
-  // set events hash
   var events = this._events = this._events || {};
-  // set listeners array
   var listeners = events[ eventName ] = events[ eventName ] || [];
-  // only add once
   if ( listeners.indexOf( listener ) == -1 ) {
     listeners.push( listener );
   }
@@ -202,14 +140,9 @@ proto.once = function( eventName, listener ) {
   if ( !eventName || !listener ) {
     return;
   }
-  // add event
   this.on( eventName, listener );
-  // set once flag
-  // set onceEvents hash
   var onceEvents = this._onceEvents = this._onceEvents || {};
-  // set onceListeners object
   var onceListeners = onceEvents[ eventName ] = onceEvents[ eventName ] || {};
-  // set flag
   onceListeners[ listener ] = true;
 
   return this;
@@ -233,23 +166,17 @@ proto.emitEvent = function( eventName, args ) {
   if ( !listeners || !listeners.length ) {
     return;
   }
-  // copy over to avoid interference if .off() in listener
   listeners = listeners.slice(0);
   args = args || [];
-  // once stuff
   var onceListeners = this._onceEvents && this._onceEvents[ eventName ];
 
   for ( var i=0; i < listeners.length; i++ ) {
     var listener = listeners[i]
     var isOnce = onceListeners && onceListeners[ listener ];
     if ( isOnce ) {
-      // remove listener
-      // remove before trigger to prevent recursion
       this.off( eventName, listener );
-      // unset once flag
       delete onceListeners[ listener ];
     }
-    // trigger listener
     listener.apply( this, args );
   }
 
@@ -265,37 +192,20 @@ return EvEmitter;
 
 }));
 
-/*!
- * getSize v2.0.3
- * measure size of elements
- * MIT license
- */
-
-/* jshint browser: true, strict: true, undef: true, unused: true */
-/* globals console: false */
-
 ( function( window, factory ) {
-  /* jshint strict: false */ /* globals define, module */
   if ( typeof define == 'function' && define.amd ) {
-    // AMD
     define( 'get-size/get-size',factory );
   } else if ( typeof module == 'object' && module.exports ) {
-    // CommonJS
     module.exports = factory();
   } else {
-    // browser global
     window.getSize = factory();
   }
 
 })( window, function factory() {
 'use strict';
 
-// -------------------------- helpers -------------------------- //
-
-// get a number from a string, not a percentage
 function getStyleSize( value ) {
   var num = parseFloat( value );
-  // not a percent like '100%', and a number
   var isValid = value.indexOf('%') == -1 && !isNaN( num );
   return isValid && num;
 }
@@ -306,8 +216,6 @@ var logError = typeof console == 'undefined' ? noop :
   function( message ) {
     console.error( message );
   };
-
-// -------------------------- measurements -------------------------- //
 
 var measurements = [
   'paddingLeft',
@@ -342,12 +250,6 @@ function getZeroSize() {
   return size;
 }
 
-// -------------------------- getStyle -------------------------- //
-
-/**
- * getStyle, get style of element, check for Firefox bug
- * https://bugzilla.mozilla.org/show_bug.cgi?id=548397
- */
 function getStyle( elem ) {
   var style = getComputedStyle( elem );
   if ( !style ) {
@@ -358,17 +260,11 @@ function getStyle( elem ) {
   return style;
 }
 
-// -------------------------- setup -------------------------- //
-
 var isSetup = false;
 
 var isBoxSizeOuter;
 
-/**
- * setup
- * check isBoxSizerOuter
- * do on first getSize() rather than on page load for Firefox bug
- */
+
 function setup() {
   // setup once
   if ( isSetup ) {
@@ -376,12 +272,6 @@ function setup() {
   }
   isSetup = true;
 
-  // -------------------------- box sizing -------------------------- //
-
-  /**
-   * Chrome & Safari measure the outer-width on style.width on border-box elems
-   * IE11 & Firefox<29 measures the inner-width
-   */
   var div = document.createElement('div');
   div.style.width = '200px';
   div.style.padding = '1px 2px 3px 4px';
@@ -392,31 +282,25 @@ function setup() {
   var body = document.body || document.documentElement;
   body.appendChild( div );
   var style = getStyle( div );
-  // round value for browser zoom. desandro/masonry#928
   isBoxSizeOuter = Math.round( getStyleSize( style.width ) ) == 200;
   getSize.isBoxSizeOuter = isBoxSizeOuter;
 
   body.removeChild( div );
 }
 
-// -------------------------- getSize -------------------------- //
-
 function getSize( elem ) {
   setup();
 
-  // use querySeletor if elem is string
   if ( typeof elem == 'string' ) {
     elem = document.querySelector( elem );
   }
 
-  // do not proceed on non-objects
   if ( !elem || typeof elem != 'object' || !elem.nodeType ) {
     return;
   }
 
   var style = getStyle( elem );
 
-  // if hidden, everything is 0
   if ( style.display == 'none' ) {
     return getZeroSize();
   }
@@ -427,12 +311,10 @@ function getSize( elem ) {
 
   var isBorderBox = size.isBorderBox = style.boxSizing == 'border-box';
 
-  // get all measurements
   for ( var i=0; i < measurementsLength; i++ ) {
     var measurement = measurements[i];
     var value = style[ measurement ];
     var num = parseFloat( value );
-    // any 'auto', 'medium' value will be 0
     size[ measurement ] = !isNaN( num ) ? num : 0;
   }
 

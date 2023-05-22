@@ -1,9 +1,4 @@
-/*!
- * Bootstrap Utilities v5.2.3 (https://getbootstrap.com/)
- * Copyright 2011-2022 The Bootstrap Authors
- * Copyright 2011-2022 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -1464,7 +1459,6 @@
   white-space: nowrap !important;
 }
 
-/* rtl:begin:remove */
 .text-break {
   word-wrap: break-word !important;
   word-break: break-word !important;
@@ -4262,5 +4256,3 @@
     display: none !important;
   }
 }
-
-/*# sourceMappingURL=bootstrap-utilities.css.map */
